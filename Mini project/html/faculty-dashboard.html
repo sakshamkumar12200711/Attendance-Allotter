@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Faculty Dashboard</h1>
+    </header>
+    <section id="loginSection" class="login">
+        <form id="facultyLoginForm" class="login-form">
+            <label for="faculty-id">Faculty ID</label>
+            <input type="text" id="faculty-id" name="facultyId" required>
+
+            <label for="faculty-password">Password</label>
+            <input type="password" id="faculty-password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    <section id="dashboardSection" class="dashboard hidden">
+        <nav class="dashboard-nav">
+            <a href="mark-attendance.html">Mark Attendance</a>
+            <a href="reports.html">View Reports</a>
+        </nav>
+
+        <main class="dashboard-content">
+            <p>Welcome back, <span id="facultyName">Faculty</span>!</p>
+        </main>
+    </section>
+</body>
+</html>
