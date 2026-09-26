@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="student-dashboard.html">Dashboard</a>
+            <a href="reports.html">Reports</a>
+            <button id="logout">logout</button>
+        </div>
+    </nav>
+    <main class="attend-page">
+        <h2>MARK ATTENDANCE</h1>
+            <section class="calendar">
+                <h3>calendar</h3>
+                <div id="cal">
+                </div>
+            </section>
+            <section class="subject">
+                <h3>SUBJECTS</h3>
+                <button id="addSubject">+ Add Subject</button>
+                <div class="sublist" id="sublist">
+                </div>
+            </section>
+            <section class="day-attendance">
+                <h2 id="selectedDate">
+                    Select a date
+                </h2>
+                <p>
+                    Subject:
+                    <span id="selectedSubject">
+
+                    </span>
+                </p>
+                <p>
+                    Status:
+                    <span id="status">
+                        Not Marked
+                    </span>
+                </p>
+                <button id="presentBtn">
+                    Present
+                </button>
+                <button id="absentBtn">
+                    Absent
+                </button>
+                <button id="unmarkBtn">
+                    Unmark
+                </button>
+            </section>
+            <section class="summary">
+                <h2>Attendance Summary</h2>
+                <p>
+                    Present:
+                    <span id="present">
+                        0
+                    </span>
+                </p>
+                <p>
+                    Absent:
+                    <span id="absent">
+                        0
+                    </span>
+                </p>
+                <p>
+                    Total Classes:
+                    <span id="total">
+                        0
+                    </span>
+                </p>
+                <p>
+                    Attendance:
+                    <span id="percentage">
+                        0%
+                    </span>
+                </p>
+            </section>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"></script>
+    <script src="mark-attendance.js"></script>
+</body>
+
+</html>
