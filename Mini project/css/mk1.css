@@ -1,0 +1,378 @@
+/* ===== Black & Blur theme ===== */
+:root {
+    --bg: #050507;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-strong: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.12);
+    --text: #ececf1;
+    --muted: #9a9aa8;
+    --present: #4ade80;
+    --absent: #f87171;
+    --accent: #8b9cff;
+    --blur: blur(18px) saturate(140%);
+    --radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    line-height: 1.5;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* soft blurred light blobs behind everything */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 45vw;
+    height: 45vw;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+body::before {
+    top: -12vw;
+    left: -10vw;
+    background: #3b4cca;
+}
+
+body::after {
+    bottom: -15vw;
+    right: -10vw;
+    background: #7a2fa8;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: flex-end;
+    padding: 14px 28px;
+    background: rgba(10, 10, 14, 0.55);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: #fff;
+}
+
+#logout {
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--glass);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+#logout:hover {
+    background: rgba(248, 113, 113, 0.18);
+    border-color: rgba(248, 113, 113, 0.5);
+}
+
+/* ===== Page layout ===== */
+.attend-page {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 20px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.attend-page > h2 {
+    grid-column: 1 / -1;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.attend-page > section {
+    background: var(--glass);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.attend-page h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--muted);
+}
+
+/* placement */
+.student {
+    grid-column: 1 / -1;
+}
+
+.calendar {
+    grid-column: 1;
+    grid-row: 3 / span 3;
+}
+
+.subject {
+    grid-column: 2;
+}
+
+.day-attendance {
+    grid-column: 2;
+}
+
+.summary {
+    grid-column: 2;
+}
+
+/* ===== Inputs ===== */
+input[type="number"] {
+    width: 100%;
+    max-width: 340px;
+    padding: 11px 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]::placeholder {
+    color: #6c6c7a;
+}
+
+input[type="number"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139, 156, 255, 0.2);
+}
+
+/* ===== Buttons ===== */
+.attend-page button {
+    padding: 9px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--glass-strong);
+    color: var(--text);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.attend-page button:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.attend-page button:active {
+    transform: scale(0.97);
+}
+
+.attend-page button:focus-visible,
+.nav-links a:focus-visible,
+#logout:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+#addSubject {
+    margin-bottom: 14px;
+}
+
+#presentBtn {
+    border-color: rgba(74, 222, 128, 0.45);
+    color: var(--present);
+}
+
+#presentBtn:hover {
+    background: rgba(74, 222, 128, 0.18);
+}
+
+#absentBtn {
+    border-color: rgba(248, 113, 113, 0.45);
+    color: var(--absent);
+}
+
+#absentBtn:hover {
+    background: rgba(248, 113, 113, 0.18);
+}
+
+#unmarkBtn {
+    color: var(--muted);
+}
+
+.day-attendance button {
+    margin: 12px 8px 0 0;
+}
+
+/* ===== Subject list (items added by JS) ===== */
+.sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.sublist > * {
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.sublist > *:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* add class "active" or "selected" to the chosen subject in JS */
+.sublist > .active,
+.sublist > .selected {
+    border-color: var(--accent);
+    background: rgba(139, 156, 255, 0.16);
+}
+
+/* ===== Day attendance + summary text ===== */
+.day-attendance h2,
+.summary h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.day-attendance p,
+.summary p {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    padding: 4px 0;
+}
+
+.day-attendance p span,
+.summary p span {
+    color: var(--text);
+    font-weight: 600;
+}
+
+#present {
+    color: var(--present) !important;
+}
+
+#absent {
+    color: var(--absent) !important;
+}
+
+#percentage {
+    color: var(--accent) !important;
+}
+
+/* ===== FullCalendar overrides ===== */
+#cal {
+    --fc-page-bg-color: transparent;
+    --fc-neutral-bg-color: rgba(255, 255, 255, 0.04);
+    --fc-border-color: rgba(255, 255, 255, 0.1);
+    --fc-today-bg-color: rgba(139, 156, 255, 0.16);
+    --fc-highlight-color: rgba(139, 156, 255, 0.25);
+    --fc-event-bg-color: var(--accent);
+    --fc-event-border-color: var(--accent);
+    --fc-button-bg-color: rgba(255, 255, 255, 0.08);
+    --fc-button-border-color: rgba(255, 255, 255, 0.15);
+    --fc-button-hover-bg-color: rgba(255, 255, 255, 0.18);
+    --fc-button-hover-border-color: rgba(255, 255, 255, 0.25);
+    --fc-button-active-bg-color: rgba(139, 156, 255, 0.35);
+    --fc-button-active-border-color: var(--accent);
+    color: var(--text);
+}
+
+#cal .fc-toolbar-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#cal .fc-button {
+    color: var(--text);
+    text-transform: capitalize;
+    box-shadow: none !important;
+}
+
+#cal .fc-col-header-cell-cushion,
+#cal .fc-daygrid-day-number {
+    color: var(--text);
+    text-decoration: none;
+}
+
+#cal .fc-daygrid-day:hover {
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+}
+
+#cal .fc-day-other .fc-daygrid-day-number {
+    color: #5a5a68;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .attend-page {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar,
+    .subject,
+    .day-attendance,
+    .summary {
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
