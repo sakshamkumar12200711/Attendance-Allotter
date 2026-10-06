@@ -160,3 +160,6 @@ studentId.addEventListener("keydown", (e) => {
         update_attend();
     }
 });
+document.getElementById("logout").addEventListener("click", () => {
+    window.location.href = "logout.html";
+});
