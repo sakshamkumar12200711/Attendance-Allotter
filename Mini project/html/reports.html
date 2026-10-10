@@ -4,27 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Reports</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="../css/mk1.css">
+    <link rel="stylesheet" href="../css/Report.css">
+    </head>
 <body>
-    <header>
-        <h1>Attendance Reports</h1>
-    </header>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a id="dashLink" href="student-dashboard.html">Dashboard</a>
+            <button id="logout">logout</button>
+        </div>
+    </nav>
 
-    <section class="reports">
-        <p>Overall Attendance: <span id="overallPercentage">--%</span></p>
+    <main class="report-page">
+        <h2>ATTENDANCE REPORT</h2>
 
-        <table class="attendance-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Subject</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-        </table>
-    </section>
+        <section>
+            <h3>Summary</h3>
+            <p class="row">Student ID: <span id="studentLabel">--</span></p>
+            <p class="row">Overall Attendance: <span id="overallPercentage">--%</span></p>
+            <p id="message"></p>
+        </section>
 
-    <script src="js/script.js"></script>
+        <section>
+            <h3>Subject-wise</h3>
+            <ul id="subjectSummary"></ul>
+        </section>
+
+        <section>
+            <h3>All records</h3>
+            <div class="table-wrap">
+                <table class="attendance-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="../JS/Report.js"></script>
 </body>
 </html>

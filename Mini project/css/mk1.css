@@ -376,3 +376,23 @@ input[type="number"]:focus {
         transition: none !important;
     }
 }
+
+/* subject name box */
+.sublist input[type="text"] {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+}
+
+.sublist input[type="text"]::placeholder {
+    color: #6c6c7a;
+}
+
+.sublist input[type="text"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139, 156, 255, 0.2);
+}

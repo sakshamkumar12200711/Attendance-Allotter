@@ -1,3 +1,9 @@
+try {
+    if (sessionStorage.getItem("role") !== "faculty") {
+        window.location.replace("faculty-dashboard.html");
+    }
+} catch (err) {}
+
 const API = "http://localhost:8080/api/v1/attendance";
 
 let getcalendar = document.getElementById("cal");
@@ -26,8 +32,13 @@ function makeKey() {
     return currStudent + "_" + currDate + "_" + currSubject;
 }
 function ready() {
-    if (currStudent == null || currStudent == "") {
+    const typed = studentId.value.trim();
+    if (typed === "") {
         alert("please enter student id");
+        return false;
+    }
+    if (typed !== currStudent) {
+        alert("Press Enter in the student ID box to load this student first");
         return false;
     }
     if (currDate == null || currSubject == null) {
@@ -67,6 +78,8 @@ function addSubjectToList(name) {
     let para = document.createElement("p");
     para.innerText = name;
     para.addEventListener("click", () => {
+        sublist.querySelectorAll("p").forEach(x => x.classList.remove("active"));
+        para.classList.add("active");
         select_sub.innerText = name;
         currSubject = name;
         update_status();
@@ -167,4 +180,8 @@ studentId.addEventListener("keydown", async (e) => {
         update_status();
         update_attend();
     }
+});
+
+document.getElementById("logout").addEventListener("click", () => {
+    window.location.href = "logout.html";   // logout.html clears the session
 });
